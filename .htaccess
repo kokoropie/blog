@@ -1,0 +1,26 @@
+#php_flag display_errors "Off"
+
+ErrorDocument 404 /404
+ErrorDocument 403 /404
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# action.php
+RewriteRule ^action$ action.php [L]
+RewriteRule ^action/$ action.php [L]
+RewriteRule ^action/([a-z_-]+)$ action.php?file=$1 [L]
+RewriteRule ^action/([a-z_-]+)/$ action.php?file=$1 [L]
+RewriteRule ^action/([a-z_-]+)\.([a-z_-]+)$ action.php?file=$1&folder=$2 [L]
+RewriteRule ^action/([a-z_-]+)\.([a-z_-]+)/$ action.php?file=$1&folder=$2 [L]
+
+# index.php
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?file=$1 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?file=$1 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)\.html$ index.php?file=$1&act=$2 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)\.([0-9]+)\.html$ index.php?file=$1&act=$2.$3 [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?file=404 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?file=404 [L]
