@@ -108,7 +108,7 @@ CREATE TABLE `like` (
   `time` int(11) NOT NULL DEFAULT '0',
   `post_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`like_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
 
 --
 -- Kaga Akatsuki - Insert Data: `like`
@@ -139,7 +139,7 @@ CREATE TABLE `post` (
   `description` longtext COLLATE utf8_unicode_ci,
   `file` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
 
 --
 -- Kaga Akatsuki - Insert Data: `post`
