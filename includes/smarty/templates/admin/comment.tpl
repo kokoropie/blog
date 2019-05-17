@@ -16,7 +16,7 @@
                 <th>THỜI GIAN</th>
               </tr>
             </thead>
-            <tfoot>
+            <tfoot><!-- comment -->
               <tr>
                 <th>
                   <input type="checkbox" data-check="[data-target=checkbox]" id="check_all_2" onchange="document.getElementById('check_all_1').checked = this.checked" class="filled-in chk-col-{$theme}" />
