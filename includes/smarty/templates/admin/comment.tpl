@@ -3,48 +3,46 @@
     <div class="card">
       <div class="body">
         <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover dataTable" data-table>
+          <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>
                 <th>
                   <input type="checkbox" data-check="[data-target=checkbox]" id="check_all_1" onchange="document.getElementById('check_all_2').checked = this.checked" class="filled-in chk-col-{$theme}" />
                   <label for="check_all_1"></label>
                 </th>
-                <th>ID</th>
-                <th>TÊN</th>
+                <th>THÔNG TIN</th>
+                <th>BÌNH LUẬN</th>
                 <th>BÀI VIẾT</th>
+                <th>THỜI GIAN</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>
-                  <input type="checkbox" data-check="[type=checkbox]:not([data-check])" id="check_all_2" onchange="document.getElementById('check_all_1').checked = this.checked" class="filled-in chk-col-{$theme}" />
+                  <input type="checkbox" data-check="[data-target=checkbox]" id="check_all_2" onchange="document.getElementById('check_all_1').checked = this.checked" class="filled-in chk-col-{$theme}" />
                   <label for="check_all_2"></label>
                 </th>
-                <th>ID</th>
-                <th>TÊN</th>
+                <th>THÔNG TIN</th>
+                <th>BÌNH LUẬN</th>
                 <th>BÀI VIẾT</th>
+                <th>THỜI GIAN</th>
               </tr>
             </tfoot>
             <tbody>
               {foreach $comment as $value}
               <tr>
                 <td>
-                  <input type="checkbox" data-target="checkbox" id="comment_id_{$value.comment_id}" onchange="document.getElementById('real_' + this.id).checked = this.checked" class="filled-in chk-col-{$theme}" />
+                  <input type="checkbox" name="comment_id[{$value.comment_id}]" value="{$value.comment_id}" data-target="checkbox" id="comment_id_{$value.comment_id}" class="filled-in chk-col-{$theme}" />
                   <label for="comment_id_{$value.comment_id}"></label>
                 </td>
-                <td>
-                  {$value.comment_id}
-                </td>
-                <td><a href="/category/{$value.post_id}.html" class="col-{$theme}">{$value.from}</a></td>
+                <td>{$value.from}</td>
                 <td>{$value.comment}</td>
+                <td><a href="/post/{$value.post_url}.html" class="col-{$theme}">{$value.post_name}</a></td>
+                <td>{$value.time}</td>
               </tr>
               {/foreach}
             </tbody>
           </table>
-          {foreach $comment as $value}
-          <input type="checkbox" id="real_comment_id_{$value.comment_id}" data-comment="{$value.comment_id}" class="filled-in chk-col-{$theme}" />
-          {/foreach}
         </div>
       </div>
     </div>

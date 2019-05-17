@@ -9,6 +9,25 @@ START TRANSACTION;
 -- --------------------------------------------------------
 
 --
+-- Kaga Akatsuki - Create Table `block_comment`
+--
+
+DROP TABLE IF EXISTS `block_comment`; 
+CREATE TABLE `block_comment` (
+  `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `time` int(12) NOT NULL,
+  PRIMARY KEY (`ip`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+
+--
+-- Kaga Akatsuki - Insert Data: `block_comment`
+--
+
+INSERT INTO `block_comment` (`ip`,`time`) VALUE);
+
+-- --------------------------------------------------------
+
+--
 -- Kaga Akatsuki - Create Table `category`
 --
 
@@ -154,7 +173,7 @@ INSERT INTO `post` (`post_id`,`thumbnail`,`name`,`content`,`view`,`time`,`cat_id
 ('6','','akkaka','<p>skis</p>','5','1556995052','2','1','public','akkaka,akkaka','',''),
 ('7','','test','<div class=\"youtube-embed-wrapper\" style=\"height:0; overflow:hidden; padding-bottom:56.25%; padding-top:30px; position:relative\"><a href=\"https://www.youtube.com/embed/2DeBQiIfjWk\"><img height=\"auto\" src=\"//img.youtube.com/vi/2DeBQiIfjWk/sddefault.jpg\" style=\"left:0; position:absolute; top:0\" width=\"100%\" /></a></div>\n\n<p>&nbsp;</p>','50','1557030831','2','0','public','test','',''),
 ('9','','code','<pre>\n<code class=\"language-php\">/*************************\n	*Author: Kaga Akatsuki\n	*Date: 17/04/2019\n*************************/\n\nclass Count {\n\n  private $dir, $online, $count;\n\n  function __construct($dir) {\n		$this---&gt;dir = $dir;\n    if (!is_dir($this-&gt;dir)) {\n      mkdir($this-&gt;dir);\n    }\n    $this-&gt;online = $dir . \"online.log\";\n    $this-&gt;count = $dir . \"count/\";\n	}\n\n  public function get_online($ip) {\n    if (!file_exists($this-&gt;online) || !is_array(json_decode(file_get_contents($this-&gt;online), true))) {\n      file_put_contents($this-&gt;online, json_encode(array()));\n    }\n\n    $online = json_decode(file_get_contents($this-&gt;online), true);\n    $tmp = array();\n    $onl = 0;\n    $time = time();\n    foreach ($online as $key =&gt; $value) {\n      if ($key != $ip) {\n        if ($time - $value &gt; 300) continue;\n        $tmp[$key] = $value;\n        $onl++;\n      }\n    }\n    $onl++;\n    $tmp[$ip] = $time;\n\n    file_put_contents($this-&gt;online, json_encode($tmp));\n\n    return $onl;\n  }\n\n  public function get_count($true = true) {\n    $today = $this-&gt;count . date(\"Y-m-d\") . \".log\";\n    $yesterday = $this-&gt;count . date(\"Y-m-d\", time() - 24 * 60 * 60) . \".log\";\n\n    $count = array (\n      \'today\' =&gt; 0,\n      \'yesterday\' =&gt; 0,\n      \'total\' =&gt; 0,\n      \'date\' =&gt; 0,\n      \'avg\' =&gt; 0,\n      \'month\' =&gt; 0,\n      \'week\' =&gt; 0,\n      \'year\' =&gt; 0\n    );\n\n    if (!is_dir($this-&gt;count)) {\n      mkdir($this-&gt;count);\n    }\n\n    if (!file_exists($today)) {\n      file_put_contents($today, json_encode(array()));\n    }\n\n    if (file_exists($yesterday)) {\n      $count[\'yesterday\'] = count(json_decode(file_get_contents($yesterday), true));\n    }\n\n    $tmp = json_decode(file_get_contents($today), true);\n    if ($true) {\n      $tmp[] = time();\n      file_put_contents($today, json_encode($tmp));\n    }\n    $count[\'today\'] = count($tmp);\n\n    $tmp = glob($this-&gt;count . \"*.log\");\n    $count[\'date\'] = count($tmp);\n\n    foreach ($tmp as $key =&gt; $value) {\n      $count[\'total\'] += count(json_decode(file_get_contents($value), true));\n      foreach (json_decode(file_get_contents($value), true) as $time) {\n        if (date(\"Y-W\", $time) == date(\"Y-W\")) {\n          $count[\'week\']++;\n        }\n      }\n    }\n\n    $tmp = glob($this-&gt;count . date(\"Y-m\") . \"-*.log\");\n    foreach ($tmp as $key =&gt; $value) {\n      $count[\'month\'] += count(json_decode(file_get_contents($value), true));\n    }\n\n    $tmp = glob($this-&gt;count . date(\"Y\") . \"-*.log\");\n    foreach ($tmp as $key =&gt; $value) {\n      $count[\'year\'] += count(json_decode(file_get_contents($value), true));\n    }\n\n    $count[\'avg\'] = ceil($count[\'total\'] / $count[\'date\']);\n\n    return $count;\n  }\n\n  public function default_count() {\n    $today = $this-&gt;count . date(\"Y-m-d\") . \".log\";\n\n    if (!is_dir($this-&gt;count)) {\n      mkdir($this-&gt;count);\n    }\n\n    if (!file_exists($today)) {\n      file_put_contents($today, json_encode(array()));\n    }\n  }\n}</code></pre>','99','1557043048','2','0','public','code','',''),
-('10','','hjx','<pre>\n<code class=\"language-php\">echo \"fuck me bro!!!!\";</code></pre>\n\n<p>&nbsp;</p>','18','1557206477','2','0','public','hjx','','');
+('10','','hjx','<pre>\n<code class=\"language-php\">echo \"fuck me bro!!!!\";</code></pre>\n\n<p>&nbsp;</p>','19','1557206477','2','0','public','hjx','','');
 
 -- --------------------------------------------------------
 

@@ -79,7 +79,14 @@ if (isset($_GET['act'])) {
       $title = 'Bình Luận';
 
       $comment = $db->fetch_assoc("SELECT * FROM `comment` ORDER BY `time` DESC");
-
+      foreach ($comment as $key => $value) {
+        $tmp = json_decode($value['from']);
+        $comment[$key]['from'] = $tmp->name . (empty($tmp->email) ? NULL : ' - ' . $tmp->email);
+        $tmp = $db->fetch_assoc("SELECT * FROM `post` WHERE `post_id` = '{$value['post_id']}' ", false);
+        $comment[$key]['post_url'] = rewrite_url($tmp['name'] . '-' . $tmp['post_id']);
+        $comment[$key]['post_name'] = $tmp['name'];
+        $comment[$key]['time'] = format_date($value['time']);
+      }
       $script[] = '/public/js/admin/comment.js';
 
       $show = array(

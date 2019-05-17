@@ -1,7 +1,7 @@
 $(function() {
   $('[data-check]').each(function(key, value) {
     $(this).change(function() {
-      change_checkbox($(this).attr("data-check"), $(this)[key].checked);
+      change_checkbox($(this).attr("data-check"), this.checked);
     });
   });
 
