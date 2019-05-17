@@ -1,0 +1,100 @@
+.contact-buttons-bar {
+  position: fixed;
+  top: 120px;
+  width: 50px;
+}
+
+.contact-buttons-bar.left {
+  left: 300px !important;
+}
+
+.ls-closed .contact-buttons-bar.left {
+  left: 0px !important;
+}
+
+.contact-buttons-bar.right {
+  right: -50px;
+}
+
+.left .contact-button-link {
+  left: 0;
+}
+.right .contact-button-link {
+  right: 0;
+}
+.contact-button-link  {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin-bottom: 1px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 22px;
+  background: #8e8e93;
+  color: #fff;
+  position: relative;
+  opacity: 0.5;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+  -webkit-transition: all 250ms;
+     -moz-transition: all 250ms;
+          transition: all 250ms;
+}
+.contact-button-link:hover,
+.contact-button-link:focus,
+.contact-button-link:active {
+  color: #fff;
+  opacity: 1;
+}
+
+.left .contact-button-link.cb-hidden {
+  left: -50px;
+}
+.right .contact-button-link.cb-hidden {
+  right: -50px;
+}
+.contact-button-link.facebook {
+  background: #3b5998;
+}
+.contact-button-link.twitter {
+  background: #1da1f2;
+}
+.contact-button-link.linkedin {
+  background: #0077b5;
+}
+.contact-button-link.github {
+  background: #24292e;
+}
+.contact-button-link.email {
+  background: #d93025;
+}
+.contact-button-link.phone {
+  background: #4caf50;
+}
+.contact-button-link.reddit {
+  background: #ff4500;
+}
+.contact-button-link.pinterest {
+  background: #e60023;
+}
+
+.show-hide-contact-bar,
+.contact-button-link.show-hide-contact-bar:focus,
+.contact-button-link.show-hide-contact-bar:active {
+  background: transparent;
+  color: #000;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  width: 50px;
+}
+.contact-button-link.show-hide-contact-bar:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 0;
+  width: 50px;
+}

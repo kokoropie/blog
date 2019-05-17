@@ -1,0 +1,119 @@
+body {
+  background-image: url('../images/br.png');
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.page-loader-wrapper {
+  background-image: url('../images/br.png');
+}
+
+body.lg-on {
+  overflow: hidden;
+}
+
+.dataTables_wrapper .row {
+  margin: 0;
+}
+
+.share {
+  display: contents;
+}
+
+pre {
+  padding: 0;
+  margin: 0;
+  word-wrap: unset;
+  word-break: unset;
+  border: none;
+  border-radius: 5px;
+}
+
+pre code {
+  white-space: unset;
+}
+
+.button-fixed, .button-fixed:hover, .button-fixed:focus, .button-fixed:active {
+  position: fixed;
+  line-height: 50px;
+  width: 50px;
+  right: 50px;
+  height: 50px;
+  color: #f8f8f8;
+  text-align: center;
+  font-size: 22px;
+  display: none;
+  padding: 0 !important;
+  opacity: 0.8;
+  filter: opacity(0.8);
+  z-index: 9;
+}
+
+.scrollToTop {
+  bottom: 102px;
+}
+
+.scrollToBottom {
+  bottom: 51px;
+}
+
+.panel-default>.panel-heading {
+  position: relative;
+}
+
+.panel-default>.panel-heading .header-dropdown {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  list-style: none;
+}
+
+.panel-default>.panel-heading .header-dropdown>.dropdown>a {
+  color: #555;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #999;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #b9b9b9;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #8e8e8e;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #666;
+}
+
+::-webkit-resizer {
+  background-color: #666;
+}
+
+.hljs-ln-numbers {
+  text-align: right;
+  border-right: 1px solid;
+  vertical-align: top;
+  padding-right: 5px !important;
+}
+
+.hljs-ln-code {
+  padding-left: 10px !important;
+}
