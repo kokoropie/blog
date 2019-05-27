@@ -1,6 +1,6 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; 
-SET AUTOCOMMIT = 0; 
-START TRANSACTION; 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 
 --
 -- Kaga Akatsuki - Database: `blog`
@@ -12,18 +12,12 @@ START TRANSACTION;
 -- Kaga Akatsuki - Create Table `block_comment`
 --
 
-DROP TABLE IF EXISTS `block_comment`; 
+DROP TABLE IF EXISTS `block_comment`;
 CREATE TABLE `block_comment` (
   `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `time` int(12) NOT NULL,
   PRIMARY KEY (`ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
-
---
--- Kaga Akatsuki - Insert Data: `block_comment`
---
-
-INSERT INTO `block_comment` (`ip`,`time`) VALUE);
 
 -- --------------------------------------------------------
 
@@ -31,19 +25,19 @@ INSERT INTO `block_comment` (`ip`,`time`) VALUE);
 -- Kaga Akatsuki - Create Table `category`
 --
 
-DROP TABLE IF EXISTS `category`; 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `by_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `category`
 --
 
-INSERT INTO `category` (`cat_id`,`name`,`by_id`) VALUES 
+INSERT INTO `category` (`cat_id`,`name`,`by_id`) VALUES
 ('1','Wapmaster','0'),
 ('2','PHP','1');
 
@@ -53,18 +47,18 @@ INSERT INTO `category` (`cat_id`,`name`,`by_id`) VALUES
 -- Kaga Akatsuki - Create Table `cms`
 --
 
-DROP TABLE IF EXISTS `cms`; 
+DROP TABLE IF EXISTS `cms`;
 CREATE TABLE `cms` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `cms`
 --
 
-INSERT INTO `cms` (`name`,`content`) VALUES 
+INSERT INTO `cms` (`name`,`content`) VALUES
 ('admin','{\"username\":\"kokoropie\",\"password\":\"9dedda5fdb3ee6842e411e4df4f1f57d\"}'),
 ('author','Kaga Akatsuki'),
 ('contact','{\"facebook\":\"https:\\/\\/fb.me\\/Kaga.Akatsuki.75\",\"phone\":\"+84852700247\",\"email\":\"filberttkarry2210@gmail.com\"}'),
@@ -85,7 +79,7 @@ INSERT INTO `cms` (`name`,`content`) VALUES
 -- Kaga Akatsuki - Create Table `comment`
 --
 
-DROP TABLE IF EXISTS `comment`; 
+DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `comment_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ip` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -95,13 +89,13 @@ CREATE TABLE `comment` (
   `post_id` int(11) NOT NULL DEFAULT '0',
   `accept` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`comment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `comment`
 --
 
-INSERT INTO `comment` (`comment_id`,`ip`,`from`,`comment`,`time`,`post_id`,`accept`) VALUES 
+INSERT INTO `comment` (`comment_id`,`ip`,`from`,`comment`,`time`,`post_id`,`accept`) VALUES
 ('1','::1','{\"name\":\"D\\u01b0\\u01a1ng Ph\\u00fac Ngh\\u0129a\",\"email\":\"filberttkarry2210@gmail.com\"}','kkk','1556886049','1','1'),
 ('2','::1','{\"name\":\"D\\u01b0\\u01a1ng Ph\\u00fac Ngh\\u0129a\",\"email\":\"filberttkarry2210@gmail.com\"}','lll','1556886056','1','0'),
 ('3','::1','{\"name\":\"D\\u01b0\\u01a1ng Ph\\u00fac Ngh\\u0129a\",\"email\":\"filberttkarry2210@gmail.com\"}','kalalal','1556886063','1','1'),
@@ -120,20 +114,20 @@ INSERT INTO `comment` (`comment_id`,`ip`,`from`,`comment`,`time`,`post_id`,`acce
 -- Kaga Akatsuki - Create Table `like`
 --
 
-DROP TABLE IF EXISTS `like`; 
+DROP TABLE IF EXISTS `like`;
 CREATE TABLE `like` (
   `like_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ip` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '127.0.0.1',
   `time` int(11) NOT NULL DEFAULT '0',
   `post_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`like_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `like`
 --
 
-INSERT INTO `like` (`like_id`,`ip`,`time`,`post_id`) VALUES 
+INSERT INTO `like` (`like_id`,`ip`,`time`,`post_id`) VALUES
 ('3','::1','1556943924','1'),
 ('12','::1','1557030610','6');
 
@@ -143,7 +137,7 @@ INSERT INTO `like` (`like_id`,`ip`,`time`,`post_id`) VALUES
 -- Kaga Akatsuki - Create Table `post`
 --
 
-DROP TABLE IF EXISTS `post`; 
+DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
   `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `thumbnail` longtext COLLATE utf8_unicode_ci,
@@ -158,13 +152,13 @@ CREATE TABLE `post` (
   `description` longtext COLLATE utf8_unicode_ci,
   `file` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `post`
 --
 
-INSERT INTO `post` (`post_id`,`thumbnail`,`name`,`content`,`view`,`time`,`cat_id`,`sticky`,`status`,`keywords`,`description`,`file`) VALUES 
+INSERT INTO `post` (`post_id`,`thumbnail`,`name`,`content`,`view`,`time`,`cat_id`,`sticky`,`status`,`keywords`,`description`,`file`) VALUES
 ('1','/upload/2019/04/29/thumbnail.png','Chào Mừng Đến Với Blog Kaga Akatsuki','<p>Cho vui thôi =))</p>','30','1556546389','2','1','public','Chào,Mừng,Đến,Với,Blog,Kaga,Akatsuki,Chao,Mung,den,Voi,Blog,Kaga,Akatsuki','',''),
 ('2','','Test Gallery','<p><img alt=\"\" class=\"img-responsive\" src=\"https://s1-ssl.dmcdn.net/X_2oX/x240-ZKb.jpg\" /></p>\n\n<p><img alt=\"\" class=\"img-responsive\" src=\"https://uploads.disquscdn.com/images/bb2f19e86fb3e5fc877ec728bd10c2c20fc20723c573e57834655cbd6dda8cfc.jpg\" /></p>','88','1556990011','2','1','public','Test,Gallery,test,gallery','',''),
 ('3','','what','<p>mmm</p>','2','1556994636','2','1','public','what,what','',''),
@@ -181,18 +175,18 @@ INSERT INTO `post` (`post_id`,`thumbnail`,`name`,`content`,`view`,`time`,`cat_id
 -- Kaga Akatsuki - Create Table `theme`
 --
 
-DROP TABLE IF EXISTS `theme`; 
+DROP TABLE IF EXISTS `theme`;
 CREATE TABLE `theme` (
   `ip` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `theme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Kaga Akatsuki - Insert Data: `theme`
 --
 
-INSERT INTO `theme` (`ip`,`theme`) VALUES 
+INSERT INTO `theme` (`ip`,`theme`) VALUES
 ('::1','cyan'),
 ('112.197.224.66','deep-orange'),
 ('112.197.226.84','orange'),
@@ -201,4 +195,4 @@ INSERT INTO `theme` (`ip`,`theme`) VALUES
 ('159.138.61.221','blue'),
 ('27.2.33.204','light-blue');
 
-COMMIT; 
+COMMIT;

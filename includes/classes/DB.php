@@ -18,7 +18,7 @@ class DB {
 	}
 
 	public function connect () {
-		$this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->name);
+		$this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->name) or die(mysqli_connect_error());
 	}
 
 	public function query ($sql = NULL) {
@@ -96,34 +96,36 @@ class DB {
 	    $createTable = $this->fetch_assoc("SHOW CREATE TABLE `{$table}`", false)['Create Table'];
 	    $return .= $createTable."; \n\n";
 
-	    $return .= "--\n";
-	    $return .= "-- Kaga Akatsuki - Insert Data: `{$table}`\n";
-	    $return .= "--\n\n";
+			$rowdata = $this->fetch_assoc("SELECT * FROM `{$table}`");
+			if (count($rowdata) > 0) {
+				$return .= "--\n";
+		    $return .= "-- Kaga Akatsuki - Insert Data: `{$table}`\n";
+		    $return .= "--\n\n";
 
-	    $return .= "INSERT INTO `{$table}` ";
+		    $return .= "INSERT INTO `{$table}` ";
 
-	    $row = $this->fetch_assoc("DESCRIBE `{$table}`");
+		    $row = $this->fetch_assoc("DESCRIBE `{$table}`");
 
-	    $return .= "(";
-	    foreach ($row as $value) {
-	      $return .= "`{$value['Field']}`,";
-	    }
-	    $return = substr("$return", 0, -1);
-	    $return .= ")";
+		    $return .= "(";
+		    foreach ($row as $value) {
+		      $return .= "`{$value['Field']}`,";
+		    }
+		    $return = substr("$return", 0, -1);
+		    $return .= ")";
 
-	    $rowdata = $this->fetch_assoc("SELECT * FROM `{$table}`");
-	    $return .= " VALUES \n";
-	    foreach ($rowdata as $value) {
-	      $return .= "(";
-	      foreach ($value as $v) {
-	        $return .= "'".$this->real_escape_string($v) . "',";
-	      }
-	      $return = substr("$return", 0, -1);
-	      $return .= "),\n";
-	    }
-	    $return = substr("$return", 0, -3);
-	    $return .= ");" ."\n\n";
-	  }
+		    $return .= " VALUES \n";
+		    foreach ($rowdata as $value) {
+		      $return .= "(";
+		      foreach ($value as $v) {
+		        $return .= "'".$this->real_escape_string($v) . "',";
+		      }
+		      $return = substr("$return", 0, -1);
+		      $return .= "),\n";
+		    }
+		    $return = substr("$return", 0, -3);
+		    $return .= ");" ."\n\n";
+		  }
+		}
 
 	  $return .= "COMMIT; ";
 

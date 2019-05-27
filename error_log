@@ -1,2 +1,0 @@
-[17-May-2019 16:48:06 Asia/Ho_Chi_Minh] PHP Notice:  Undefined variable: commemt in C:\xampp\htdocs\blog\includes\functions\index\admin.php on line 82
-[17-May-2019 16:48:06 Asia/Ho_Chi_Minh] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\blog\includes\functions\index\admin.php on line 82
