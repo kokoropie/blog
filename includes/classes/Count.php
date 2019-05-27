@@ -21,7 +21,6 @@ class Count {
 
   public function get_log() {
     $tmp = json_decode(file_get_contents($this->log), true);
-    asort($tmp);
     $time = time();
     $logs = array();
     foreach ($tmp as $log => $ip) {
@@ -30,6 +29,8 @@ class Count {
         'time' => format_date($log, $time)
       );
     }
+
+    asort($log);
 
     return $logs;
   }
