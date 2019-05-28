@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
       $file_thumbnail = dir_file(DIR_ROOT . 'upload', $name);
       move_uploaded_file($tmp, $file_thumbnail);
       $file_thumbnail = str_replace(DIR_ROOT, '/', $file_thumbnail);
-      //$db->query("UPDATE `cms` SET `content` = '{$file_thumbnail}' WHERE `name` = 'thumbnail' ");
+      $db->query("UPDATE `cms` SET `content` = '{$file_thumbnail}' WHERE `name` = 'thumbnail' ");
     } else {
       echo json_encode(
         array(
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
       $file_favicon = dir_file(DIR_ROOT . 'upload', $name);
       move_uploaded_file($tmp, $file_favicon);
       $file_favicon = str_replace(DIR_ROOT, '/', $file_favicon);
-      //$db->query("UPDATE `cms` SET `content` = '{$file_favicon}' WHERE `name` = 'favicon' ");
+      $db->query("UPDATE `cms` SET `content` = '{$file_favicon}' WHERE `name` = 'favicon' ");
     } else {
       echo json_encode(
         array(
@@ -68,6 +68,8 @@ if (isset($_POST['submit'])) {
   $db->query("UPDATE `cms` SET `content` = '{$title}' WHERE `name` = 'title' ");
   $db->query("UPDATE `cms` SET `content` = '{$keywords}' WHERE `name` = 'keywords' ");
   $db->query("UPDATE `cms` SET `content` = '{$description}' WHERE `name` = 'description' ");
+
+  $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Cập Nhật Thông Tin Web', '".time()."')");
 
   $return = [
     'title' => $title_now . $title,

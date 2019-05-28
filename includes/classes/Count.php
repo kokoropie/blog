@@ -6,7 +6,7 @@
 
 class Count {
 
-  private $dir, $log, $online, $count;
+  private $dir, $online, $count;
 
   function __construct($dir) {
 		$this->dir = $dir;
@@ -14,41 +14,9 @@ class Count {
       mkdir($this->dir);
 
     }
-    $this->log = $dir . "admin.log";
     $this->online = $dir . "online.log";
     $this->count = $dir . "count/";
 	}
-
-  public function get_log() {
-    $tmp = json_decode(file_get_contents($this->log), true);
-    $time = time();
-    $logs = array();
-    foreach ($tmp as $log => $ip) {
-      $logs[] = array (
-        'ip' => $ip,
-        'time' => format_date($log, $time)
-      );
-    }
-
-    asort($log);
-
-    return $logs;
-  }
-
-  public function set_log($ip = NULL) {
-    if (!file_exists($this->log) || !is_array(json_decode(file_get_contents($this->log), true))) {
-      file_put_contents($this->log, json_encode(array()));
-
-    }
-    if (!empty($ip)) {
-      $tmp = json_decode(file_get_contents($this->log), true);
-      $tmp[time()] = $ip;
-      $return = file_put_contents($this->log, json_encode($tmp));
-      return $return;
-    } else {
-      return true;
-    }
-  }
 
   public function get_online($ip) {
     if (!file_exists($this->online) || !is_array(json_decode(file_get_contents($this->online), true))) {

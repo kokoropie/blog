@@ -36,7 +36,8 @@ if (!empty($_GET['install'])) {
 				$description = addslashes(htmlspecialchars(trim($_POST['description'])));
 				$username_admin = addslashes(htmlspecialchars(trim($_POST['username_admin'])));
 				$password_admin = addslashes(htmlspecialchars(trim($_POST['password_admin'])));
-				$copyright = addslashes(trim($_POST['copyright']));
+				$author = addslashes(htmlspecialchars(trim($_POST['author'])));
+				$intro = addslashes(htmlspecialchars(trim($_POST['intro'])));
 				$timezone = addslashes(trim($_POST['timezone']));
 				$logo = addslashes(htmlspecialchars(trim($_POST['logo'])));
 
@@ -346,6 +347,18 @@ define('CHARSET', 'utf8'); // Don't Change";
 												}
 												?>
 		                  </select>
+										</div>
+									</div>
+									<div class="form-group form-float">
+										<div class="form-line">
+											<input type="text" name="author" class="form-control" value="Kaga Akatsuki" required>
+											<label class="form-label">Tác Giả</label>
+										</div>
+									</div>
+									<div class="form-group form-float">
+										<div class="form-line">
+											<textarea name="intro" class="form-control no-resize auto-growth" required> My name is Kaga. I love coding.</textarea>
+											<label class="form-label">Tự Bạch</label>
 										</div>
 									</div>
 								</fieldset>

@@ -62,39 +62,3 @@ function rewrite_url($text) {
   $text = strtolower($text);
   return $text;
 }
-
-function url($url) {
-  header("location: " . $url);
-  die();
-}
-
-function copyright($str) {
-  global $cms;
-
-	$search = array (
-  	'#\[year]#is',
-    '#\[month]#is',
-    '#\[day]#is',
-    '#\[hour]#is',
-    '#\[minute]#is',
-    '#\[second]#is',
-    '#\[date]#is',
-    '#\[title]#is',
-    '#\[keywords]#is',
-    '#\[description]#is'
-  );
-
-  $replace = array (
-    date('Y'),
-    date('m'),
-    date('d'),
-    date('H'),
-    date('i'),
-    date('s'),
-    date('Y-m-d H:i:s'),
-    $cms['title'],
-    $cms['keywords'],
-    $cms['description']
-  );
-  return nl2br(preg_replace($search, $replace, $str));
-}

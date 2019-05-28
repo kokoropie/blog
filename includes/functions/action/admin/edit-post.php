@@ -70,7 +70,8 @@ if (isset($_POST['submit'])) {
     `thumbnail` = '{$thumbnail}',
     `status` = '{$status}',
     `sticky` = '{$sticky}'
-    WHERE `post_id` = {$id} ")) {
+  WHERE `post_id` = {$id} ")) {
+    $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Cập Nhật Bài Viết \"{$name}\"', '".time()."')");
     echo json_encode(array(
       'success' => true,
       'type' => 'success',

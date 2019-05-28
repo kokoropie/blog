@@ -33,9 +33,6 @@ foreach ($file as $key => $value) {
 
 $cms['ip'] = ip();
 
-$cms['copyright_real'] = $cms['copyright'];
-$cms['copyright'] = copyright($cms['copyright']);
-
 $breadcrumb = array(
   array(
     'url' => '/',
@@ -68,15 +65,6 @@ foreach ($categories['sub'] as $key => $value) {
 $cms['url'] = $cms['url_home'] . $_SERVER['REQUEST_URI'];
 $cms['thumbnail'] = $cms['url_home'] . $cms['thumbnail'];
 
-if (!file_exists(DIR_ROOT . 'data/admin.log')) {
-  file_put_contents(DIR_ROOT . 'data/admin.log', "{}");
-}
-
-if (!is_array(json_decode(file_get_contents(DIR_ROOT . 'data/admin.log'), true))) {
-  file_put_contents(DIR_ROOT . 'data/admin.log', "{}");
-}
-
-$cms['log'] = $count->get_log();
 $cms['online'] = $count->get_online(ip());
 
 $where = array(

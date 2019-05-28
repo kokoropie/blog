@@ -137,7 +137,7 @@
             </a>
           </li>
           <li>
-            <a data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Lịch Sử Đăng Nhập" href="/admin/log.html">
+            <a data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Nhật Ký Hoạt Động" href="/admin/log.html">
               <i class="material-icons">history</i>
             </a>
           </li>

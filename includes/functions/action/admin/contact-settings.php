@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
   }
   $contact = addslashes(json_encode($_POST['contact']));
   if ($db->query("UPDATE `cms` SET `content` = '{$contact}' WHERE `name` = 'contact'")) {
+    $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Cập Nhật Thông Tin Liên Lạc', '".time()."')");
     echo json_encode([
       'msg' => 'Cập Nhật Thành Công!',
       'type' => 'success'

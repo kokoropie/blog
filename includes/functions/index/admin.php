@@ -241,7 +241,13 @@ if (isset($_GET['act'])) {
       if (empty($ss->get('logined'))) {
         url("/admin/login.html");
       }
-      $title = 'Lịch Sử Đăng Nhập';
+      $title = 'Nhật Ký Hoạt Động';
+
+      $cms['log'] = $db->fetch_assoc("SELECT * FROM `log_admin` ORDER BY `time` DESC");
+
+      foreach ($cms['log'] as $key => $value) {
+        $cms['log'][$key]['time'] = format_date($value['time']),
+      }
 
       $show = array(
         'header.tpl',

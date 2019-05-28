@@ -7,12 +7,14 @@
             <thead>
               <tr>
                 <th>IP</th>
+                <th>HÀNH ĐỘNG</th>
                 <th>THỜI GIAN</th>
               </tr>
             </thead>
             <tfoot>
               <tr>
                 <th>IP</th>
+                <th>HÀNH ĐỘNG</th>
                 <th>THỜI GIAN</th>
               </tr>
             </tfoot>
@@ -20,6 +22,7 @@
               {foreach $cms.log as $value}
               <tr id="log_{$value@key}">
                 <td>{$value.ip}</td>
+                <td>{$value.action}</td>
                 <td>{$value.time}</td>
               </tr>
               {/foreach}

@@ -47,6 +47,7 @@ if (isset($_POST['submit'])) {
     'username' => $username,
     'password' => $password
   )));
+  $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Cập Nhật Tài Khoản Admin', '".time()."')");
   $db->query("UPDATE `cms` SET `content` = '{$admin}' WHERE `name` = 'admin' ");
 
   echo json_encode([

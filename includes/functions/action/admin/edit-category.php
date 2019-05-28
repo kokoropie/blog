@@ -44,6 +44,7 @@ if (isset($_POST['submit'])) {
       $cat .= "\n".'<option value="' . $value['cat_id'] . '" '.($by_id == $value['cat_id'] ? "selected" : NULL).'>' . $value['name'] . '</option>';
     }
     $cat .= '</select>';
+    $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Cập Nhật Chuyên Mục \"{$name}\"', '".time()."')");
     echo json_encode(array(
       'success' => true,
       'type' => 'success',

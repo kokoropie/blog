@@ -4,6 +4,11 @@
 	*Date: 17/04/2019
 *************************/
 
+function url($url) {
+  header("location: " . $url);
+  die();
+}
+
 function debug ($debug) {
   echo '<pre>';
   var_dump($debug);

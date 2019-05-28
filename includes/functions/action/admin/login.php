@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
   $password = addslashes(htmlspecialchars($_POST['password']));
   if ($username == $cms['admin']['username'] && md5($password) == $cms['admin']['password']) {
     $ss->set("logined", time());
-    $count->set_log(ip());
+    $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Đăng Nhập', '".time()."')");
     echo '<meta http-equiv="refresh" content="0;url=/admin" />';
   } else {
     echo "Tài Khoản Hoặc Mật Khẩu Không Chính Xác!";

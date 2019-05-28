@@ -62,6 +62,7 @@ if (isset($_POST['submit'])) {
   }
   if ($db->query("INSERT INTO `post` (`name`,`content`,`cat_id`,`keywords`,`description`,`thumbnail`,`status`,`sticky`,`time`)
   VALUES ('{$name}','{$content}',{$cat_id},'{$keywords}','{$description}','{$thumbnail}','{$status}','{$sticky}','".time()."') ")) {
+    $db->query("INSERT INTO `log_admin` (`ip`, `action`, `time`) VALUES ('".ip()."', 'Tạo Bài Viết \"{$name}\"', '".time()."')");
     echo json_encode(array(
       'success' => true,
       'type' => 'success',
