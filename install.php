@@ -85,6 +85,14 @@ if (!empty($_GET['install'])) {
 				$conn->query("INSERT INTO `comment` (`comment_id`,`ip`,`from`,`comment`,`time`,`post_id`) VALUES
 				('1','127.0.0.1','{\"name\":\"Kaga\",\"email\":\"filberttkarry2210@gmail.com\"}','Test','" . time() . "','1')");
 
+				// Create table block_comment
+				$conn->query("DROP TABLE IF EXISTS `block_comment`");
+				$conn->query("CREATE TABLE `block_comment` (
+				  `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+				  `time` int(12) NOT NULL,
+				  PRIMARY KEY (`ip`)
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;");
+
 				// Create table like
 				$conn->query("DROP TABLE IF EXISTS `like`");
 				$conn->query("CREATE TABLE `like` (
@@ -96,6 +104,16 @@ if (!empty($_GET['install'])) {
 				) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;");
 				$conn->query("INSERT INTO `like` (`like_id`,`ip`,`time`,`post_id`) VALUES
 				('1','127.0.0.1','".time()."','1')");
+
+				// Create table log_admin
+				$conn->query("DROP TABLE IF EXISTS `log_admin`");
+				$conn->query("CREATE TABLE `log_admin` (
+				  `log_id` bigint(15) NOT NULL AUTO_INCREMENT,
+				  `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+				  `action` longtext COLLATE utf8_unicode_ci,
+				  `time` int(12) NOT NULL,
+				  PRIMARY KEY (`log_id`)
+				) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;");
 
 				// Create table theme
 				$conn->query("DROP TABLE IF EXISTS `theme`");
@@ -114,16 +132,17 @@ if (!empty($_GET['install'])) {
 				) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 				$conn->query("INSERT INTO `cms` (`name`,`content`) VALUES
 				('admin','{\"username\":\"{$username_admin}\",\"password\":\"".md5($password_admin)."\"}'),
-				('copyright','{$copyright}'),
+				('author','{$author}'),
+				('contact', '[]'),
 				('description','{$description}'),
+				('intro','{$intro}'),
 				('favicon','/public/images/favicon.ico'),
 				('keywords','{$keywords}'),
+				('logo','{$logo}'),
 				('theme','red'),
 				('thumbnail','/public/images/thumbnail.png'),
-				('title','{$title}'),
 				('timezone','{$timezone}'),
-				('logo','{$logo}'),
-				('contact', '[]')
+				('title','{$title}')
 				");
 
 				$config = "<?php

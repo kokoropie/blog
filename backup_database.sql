@@ -17,7 +17,7 @@ CREATE TABLE `block_comment` (
   `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `time` int(12) NOT NULL,
   PRIMARY KEY (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,6 @@ INSERT INTO `cms` (`name`,`content`) VALUES
 ('admin','{\"username\":\"kokoropie\",\"password\":\"9dedda5fdb3ee6842e411e4df4f1f57d\"}'),
 ('author','Kaga Akatsuki'),
 ('contact','{\"facebook\":\"https:\\/\\/fb.me\\/Kaga.Akatsuki.75\",\"phone\":\"+84852700247\",\"email\":\"filberttkarry2210@gmail.com\"}'),
-('copyright','&copy; [year] <a href=\"/\">[title]</a>'),
 ('description','Blog Kaga Akatsuki'),
 ('favicon','/public/images/favicon.ico'),
 ('intro','giới thiệu thôi!!'),
@@ -130,6 +129,21 @@ CREATE TABLE `like` (
 INSERT INTO `like` (`like_id`,`ip`,`time`,`post_id`) VALUES
 ('3','::1','1556943924','1'),
 ('12','::1','1557030610','6');
+
+-- --------------------------------------------------------
+
+--
+-- Kaga Akatsuki - Create Table `log_admin`
+--
+
+DROP TABLE IF EXISTS `log_admin`;
+CREATE TABLE `log_admin` (
+  `log_id` bigint(15) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `action` longtext COLLATE utf8_unicode_ci,
+  `time` int(12) NOT NULL,
+  PRIMARY KEY (`log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
