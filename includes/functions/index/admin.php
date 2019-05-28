@@ -246,7 +246,7 @@ if (isset($_GET['act'])) {
       $cms['log'] = $db->fetch_assoc("SELECT * FROM `log_admin` ORDER BY `time` DESC");
 
       foreach ($cms['log'] as $key => $value) {
-        $cms['log'][$key]['time'] = format_date($value['time']),
+        $cms['log'][$key]['time'] = format_date($value['time']);
       }
 
       $show = array(

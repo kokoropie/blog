@@ -18,7 +18,6 @@ $ss = new Session();
 $ss->start();
 
 $count = new Count(DIR_ROOT . 'data/');
-$count->set_log();
 
 $smarty = new Smarty();
 
