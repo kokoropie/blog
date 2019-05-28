@@ -1,5 +1,4 @@
-#php_flag display_errors "Off"
-
+#Start#
 ErrorDocument 404 /404
 ErrorDocument 403 /404
 

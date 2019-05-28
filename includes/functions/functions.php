@@ -4,6 +4,14 @@
 	*Date: 17/04/2019
 *************************/
 
+function get_ini() {
+  $tmp = ini_get_all();
+  foreach ($tmp as $key => $value) {
+    $tmp[$key] = $value['global_value'];
+  }
+  return $tmp;
+}
+
 function title_to_keywords($title) {
   $keywords = str_replace(" ", ",", $title);
   $title = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'a', $title);

@@ -6,6 +6,8 @@
 
 include_once 'functions.php';
 
+$cms['ini'] = get_ini();
+
 $cms['url_home'] = (isset($_SERVER["HTTPS"]) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
 $cms['admin'] = json_decode($cms['admin'], true);
 $cms['contact'] = json_decode($cms['contact'], true);
